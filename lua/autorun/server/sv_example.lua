@@ -1,6 +1,8 @@
 -- This file should be in lua/autorun/server/sv_whatever.lua
 
 concommand.Add( "_exit", function( ply )
+	if IsValid(ply) and !ply:IsSuperAdmin() then return end
+
 	hook.Run("ShutDown") -- Call this to get MySQL and stuff to save
 	print("Server shutting down...")
 
